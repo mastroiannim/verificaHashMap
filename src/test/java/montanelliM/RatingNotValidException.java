@@ -1,6 +1,6 @@
+package montanellim;
 
-
-public class RatingNotValidException extends Exception
+public class RatingNotValidException extends RuntimeException
 {
     
 }

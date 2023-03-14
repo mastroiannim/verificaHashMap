@@ -1,3 +1,5 @@
+package montanellim;
+
 import java.util.*;
 import java.time.*;
 
@@ -67,7 +69,7 @@ public class CallCenter
         
     }
 
-   public void aggiungiFeedback (String n, int m, LocalDate l, int r) throws RatingNotValidException{
+   public int registraValutazione (String n, int r, LocalDate l) throws RatingNotValidException{
        Feedback j= new Feedback(r,l);
        if (r<-3 ||r>3){
            throw new RatingNotValidException();
@@ -87,18 +89,28 @@ public class CallCenter
                     }
                 }
             }
+            return 0;
        }
    }
-   public LinkedList<Feedback> restituisciValutazioni(){
+   public Feedback[] restituisciValutazioni(){
        LinkedList<Feedback> t= new LinkedList();
        Iterator<Feedback> i = center.values().iterator();
+       int size = 0;
        while(i.hasNext()){
             Feedback entry = i.next();
             t.add(entry);
+            size++;
         }
-       return t;
+        Feedback[] ret = new Feedback[size]; 
+        Iterator<Feedback> j = t.iterator();
+        int index = 0;
+        while(j.hasNext()){
+            Feedback entry = j.next();
+            ret[index] = entry;
+        }
+       return ret;
    }
-   public int valutazioneComplessiva(){
+   public int valutazioneComplessiva(String mat){
         Iterator<Map.Entry<LinkedList<Operator>,Feedback>> iterator = center.entrySet().iterator();
         int somma=0;
         int media=0;
@@ -106,10 +118,24 @@ public class CallCenter
            while (iterator.hasNext()) {
                 Map.Entry<LinkedList<Operator>, Feedback> entry = iterator.next();
                 Feedback value = entry.getValue();
-                somma+=value.getId();
-                counter++;
+                if(value.matricola.equals(mat)){
+                    somma+=value.getId();
+                    counter++;
+                }
             }
         media=somma/counter;
         return media;
    }
+
+public int valutazioneMese(String matricola, int mese, int anno) {
+    return 0;
+}
+
+public Operator[] best() {
+    return null;
+}
+
+public Operator[] valutazioniNegative() {
+    return null;
+}
 }
