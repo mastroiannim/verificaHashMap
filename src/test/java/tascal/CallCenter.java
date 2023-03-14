@@ -25,4 +25,24 @@ public class CallCenter
         
         return -1;
     }
+
+    public Feedback[] restituisciValutazioni() {
+        return null;
+    }
+
+    public int valutazioneComplessiva(String matricola) {
+        return 0;
+    }
+
+    public Operator[] valutazioniNegative() {
+        return null;
+    }
+
+    public int valutazioneMese(String matricola, int mese, int anno) {
+        return 0;
+    }
+
+    public Operator[] best() {
+        return null;
+    }
 }

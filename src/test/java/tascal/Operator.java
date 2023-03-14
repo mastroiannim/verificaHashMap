@@ -18,4 +18,9 @@ public class Operator
         matricola = ("n: " + n + ", c: " + c + ", dN: " + dN);
         return matricola;
     }
+
+    public String getMatricola(){
+        matricola = ("n: " + nome + ", c: " + cognome + ", dN: " + dataNascita);
+        return matricola;
+    }
 }
