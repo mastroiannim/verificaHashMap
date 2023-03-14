@@ -6,6 +6,8 @@ public class CallCenter
 {
     HashMap<String, Operator> operatori = new HashMap<String, Operator>();
     int somma;
+    int quanteValutazioni = 0;
+    int i = 0;
     public CallCenter()
     {
         
@@ -22,9 +24,11 @@ public class CallCenter
     }
     
     public int registraValutazione(String m, int s, LocalDate d) throws scanzif.InvalidOperatorException {
-        int id = Integer.parseInt((s + "" + d.getYear() + "" + d.getMonthValue() + "" + d.getDayOfMonth()));
         if(operatori.containsKey(m)){
+            int id = operatori.get(m).quanteValutazioni;
             operatori.get(m).feedback.put(id, new Feedback(m, s,d, id));
+            operatori.get(m).quanteValutazioni++;
+            quanteValutazioni++;
             return id;
         }else{
             throw new InvalidOperatorException();
@@ -35,16 +39,35 @@ public class CallCenter
         return operatori.toString();
     }
     
-    /*public Feedback[] restituisciValutazioni(){
-        int somma = 0;
-        operatori.forEach((key, value) -> somma += value.);
-    }*/
+    public Feedback[] restituisciValutazioni(){
+        i = 0;
+        Feedback[] feedbacks = new Feedback[quanteValutazioni];
+        operatori.forEach((key, value) ->  
+            value.feedback.forEach((k, v) -> {
+                feedbacks[i] = v;
+                i++;
+            })
+        );
+        return feedbacks;
+    }
     
     public int valutazioneComplessiva(String matricola){
         HashMap<Integer, Feedback> a = operatori.get(matricola).feedback;
         somma = 0;
         a.forEach((key, value) -> somma += value.punteggio);
         return somma;
+    }
+
+    public Operator[] valutazioniNegative() {
+        return null;
+    }
+
+    public int valutazioneMese(String matricola, int mese, int anno) {
+        return 0;
+    }
+
+    public Operator[] best() {
+        return null;
     }
 }
 class NotUniqueOperatorException extends Exception{}

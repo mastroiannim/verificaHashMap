@@ -8,6 +8,7 @@ public class Operator
     String surname;
     LocalDate birthDate;
     String matricola;
+    int quanteValutazioni = 0;
     HashMap<Integer, Feedback> feedback = new HashMap<Integer, Feedback>();
     public Operator(String name, String surname, LocalDate birthDate, String matricola)
     {
