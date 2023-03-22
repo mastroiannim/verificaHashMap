@@ -33,13 +33,15 @@ public class Feedback
         Feedback.n++;
     }
     
-    public void to_string(){
-        System.out.println("matricola: " + matricola);
-        System.out.println("punteggio " + punteggio);
-        System.out.println("numero di voti " + valutazioni.size());
+    public String toString(){
+        String m = " matricola: " + matricola;
+        String p = " punteggio " + punteggio;
+        String n = " numero di voti " + valutazioni.size();
+        String voti = " voti: ";
         for(Valutazione v : valutazioni){
-           System.out.println("voto: " + v.voto); 
+           voti += v.voto + ","; 
         }
+        return m + p + n + voti;
         //System.out.println("voti " + punteggio);
         //System.out.println("data del Feed: " + matricola);
     }
@@ -58,10 +60,12 @@ public class Feedback
         return tot;
     }
     
-    public int getPunteggioAt(LocalDate data){
+    public int getPunteggioAt(int m, int a){
         int tot=0;
+        int mese = data.getMonthValue();
+        int anno = data.getYear();
         for(Valutazione v : valutazioni){
-            if(v.data.equals(data)){
+            if(mese==m && anno==a){
                 tot+=v.voto;
             }
         }

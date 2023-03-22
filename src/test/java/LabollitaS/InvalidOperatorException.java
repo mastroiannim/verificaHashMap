@@ -1,7 +1,7 @@
 package LabollitaS;
 
 
-public class InvalidOperatorException extends RuntimeException
+public class InvalidOperatorException extends Exception
 {
     
 }

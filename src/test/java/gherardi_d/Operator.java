@@ -9,14 +9,14 @@ public class Operator
     private String cognome;
     private LocalDate dataNascita;
     private String matricola;
-    private static int n=0;
+    //private static int n=0;
     
     public Operator(String n, String c, LocalDate d){
         nome=n;
         cognome=c;
         dataNascita=d;
-        matricola="o" + Operator.n;
-        Operator.n++;
+        matricola = n + c + d.toString();//matricola="o" + Operator.n;
+        //Operator.n++;
     }
     
     public String getMatricola(){
@@ -24,8 +24,8 @@ public class Operator
     }
     
     public String toString(){
-        String ret = "matricola: " + matricola;
-        ret += "data di nascita " + dataNascita;
-        return ret;
+        String m=" matricola: " + matricola;
+        String n = " data di nascita " + dataNascita;
+        return m + n;
     }
 }

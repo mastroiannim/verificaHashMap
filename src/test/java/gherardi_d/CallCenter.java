@@ -1,6 +1,6 @@
 package gherardi_d;
-import java.util.*;
-import java.time.*;
+import java.time.LocalDate;
+import java.util.Hashtable;
 
 
 
@@ -16,7 +16,7 @@ public class CallCenter
         Operator o = new Operator(nome, cognome, nasc);
         String matricola = o.getMatricola();
         for(Operator x : classifica.keySet()){
-            if(x.getMatricola()==matricola){
+            if(x.getMatricola().equals(matricola)){
                 throw new NotUniqueOperatorException();
             }
         }
@@ -35,15 +35,17 @@ public class CallCenter
     }
     
     public String toString(){
-        String ret = "numero di operatori: " + classifica.size();
+        System.out.println("numero di operatori: " + classifica.size());
+        String operatori = "";
+        String feedback = "";
         for(Operator o : classifica.keySet()){
-            ret += o.toString();
+            operatori+=o.toString();
         }
         
         for(Feedback f : classifica.values()){
-            ret += f.toString();
+            feedback += f.toString();
         }
-        return ret;
+        return operatori + feedback;
     }
     
     public int valutazioneComplessiva(String matricola){
@@ -56,24 +58,19 @@ public class CallCenter
         return tot;
     }
     
-    public int valutazioneMese(String matricola, int m, int a){
+    public int valutazioneMese(String matricola, int m, int a) throws InvalidOperatorException{
+        /*for(Operator x : classifica.keySet()){
+            if(x.getMatricola().equals(matricola)){
+                throw new InvalidOperatorException();
+            }
+        }*/
         int tot=0;
         for(Feedback f : classifica.values()){
             if(f.matricola==matricola){
-                //tot = f.getPunteggioAt(new LocalDate(a,m,26));
+                tot = f.getPunteggioAt(m, a);
             }
         }
         return tot;
-    }
-    
-    public class NotUniqueOperatorException extends RuntimeException{
-    
-    }
-    public class InvalidOperatorException extends RuntimeException{
-
-    }
-    public Feedback[] restituisciValutazioni() {
-        return null;
     }
 
     public Operator[] valutazioniNegative() {
@@ -83,4 +80,19 @@ public class CallCenter
     public Operator[] best() {
         return null;
     }
+    
+    public Feedback[] restituisciValutazioni() {
+        //impossibile per come ho "impostato" il problema
+        return null;
+    }
+
+    
+    public class NotUniqueOperatorException extends Exception{
+    
+    }
+    public class InvalidOperatorException extends Exception{
+
+    }
+    
+    
 }

@@ -14,7 +14,20 @@ public class CallCenter
         operatori = new HashMap<>();
         feedbacks = new HashMap<>();
     }
-    
+    public String toString(){
+        String s=new String();
+        Iterator<Operator > i=operatori.values().iterator();
+        Iterator<Feedback > c=feedbacks.values().iterator();
+        while(i.hasNext()){
+            Operator x=i.next();
+            s+=(x.toString())+"\n";
+        }
+        while(c.hasNext()){
+            Feedback x=c.next();
+            s+=(x.toString())+"\n";
+        }
+        return s;
+    }
     public String registraOperatore(String n, String c, LocalDate d) throws NotUniqueOperatorException{
         String matricola = String.format("%s-%s-%s", c.substring(0, 3).toUpperCase(), n.substring(0, 3).toUpperCase(), d.toString());
         Operator op = new Operator(n,c,d);
@@ -26,6 +39,7 @@ public class CallCenter
     public int registraValutazione(String m, int s, LocalDate d) throws InvalidOperatorException{
         int idValut=idValutProgressivo;
         Feedback f = new Feedback(m, s, d);
+       
         feedbacks.put(idValut, f); 
         idValutProgressivo++;
         return idValut;
@@ -40,17 +54,14 @@ public class CallCenter
         int tot=0;
         return tot;
     }
-
-    public Operator[] best() {
-        return null;
-    }
-
-    public int valutazioneMese(String matricola, int mese, int anno) {
-        return 0;
-    }
-
     public Operator[] valutazioniNegative() {
         return null;
     }
-
+    public int valutazioneMese(String matricola,int mese, int anno) {
+      return 0;
+    }
+    public Operator[] best() {
+        return null;
+      }
+  
 }
