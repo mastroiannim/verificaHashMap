@@ -11,6 +11,8 @@ public class CallCenter
    public CallCenter(){
         operatori = new HashMap<String,Operator>();
         valutazioni = new HashMap<String, Feedback>();
+        feedback = new LinkedList<Feedback>();
+        utenti = new LinkedList<Operator>();
    }
    
    public String registraOperatore(String n, String c, LocalDate b) throws NotUniqueOperatorException{
@@ -28,17 +30,17 @@ public class CallCenter
         if( s < -3 || s > 3){
             throw new NotValidScoreException();
         }
-        if(operatori.containsKey(m)){
-           throw new NotUniqueOperatorException();
+        if(!operatori.containsKey(m)){  //mancava il not
+           throw new  InvalidOperatorException();
         }
         feedback.add(f);
         valutazioni.put(m,f);
         return f.id;
     }
     
-    public Feedback[] restituisciValutazioni(){
+    public Feedback[] restituisciValutazioni(){ //non avevo messo l'id nel toSTring del feedback
         Feedback [] tutti = new Feedback[feedback.size()];
-        int index = 0;;
+        int index = 0;
         Iterator<Feedback> i= feedback.iterator();
         while(i.hasNext()){
             Feedback u = i.next();
@@ -47,7 +49,6 @@ public class CallCenter
         }
         return tutti;
         
-      
     }
     
     public int valutazioneComplessiva(String matricola) throws InvalidOperatorException{
@@ -55,12 +56,18 @@ public class CallCenter
             throw new InvalidOperatorException();
         }
         int somma = 0;
-        Iterator<Feedback> i = valutazioni.values().iterator();
-        while(i.hasNext()){
+        Iterator<Feedback> i = feedback.iterator(); // itero sulla linkedList perche con l'HashMap mi sovreascrive
+        while(i.hasNext()){                         //i feedback precedenti all'ultimo
             Feedback f = i.next();
-            somma += f.getPunteggio();
+            if(f.matricola == matricola ){
+                somma += f.getPunteggio();
+            }
+            
+            
         }
         return somma;
+        
+      
     }
     
     public int valutazioniMese(String matricola, int m, int a ) throws InvalidOperatorException {
@@ -68,11 +75,13 @@ public class CallCenter
             throw new InvalidOperatorException();
         }
         int somma = 0;
-        Iterator<Feedback> i = valutazioni.values().iterator();
-        while(i.hasNext()){
+        Iterator<Feedback> i = feedback.iterator(); // itero sulla linkedList perche con l'HashMap mi sovreascrive 
+        while(i.hasNext()){                         //i feedback precedenti all'ultimo
             Feedback f = i.next();
             if(f.getData().getMonthValue() == m && f.getData().getYear() == a){
-                somma+= f.getPunteggio();
+                if(f.matricola == matricola ){
+                    somma += f.getPunteggio(); //mancava l'if del controllo sulla matricola
+                }
             }
         }
         return somma;
@@ -85,7 +94,7 @@ public class CallCenter
         while(i.hasNext()){
             Operator u = i.next();
             //non so come fare 
-            
+           
         }
         return tutti;
     }
@@ -99,7 +108,10 @@ public class CallCenter
     
     
    
-   public class NotUniqueOperatorException extends Exception{}
-   public class NotValidScoreException extends Exception{}
-   public class InvalidOperatorException extends Exception{}
+   public class NotUniqueOperatorException extends RuntimeException{}
+   public class NotValidScoreException extends RuntimeException{}
+   public class InvalidOperatorException extends RuntimeException{}
+public Operator[] best() {
+    return null;
+}
 }

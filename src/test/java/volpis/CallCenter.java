@@ -96,5 +96,9 @@ public class CallCenter{
         }
         return operatoriNegativi.toArray(new Operator[0]);
     }
+
+    public Operator[] best() {
+        return null;
+    }
     
 }

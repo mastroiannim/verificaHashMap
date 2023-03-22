@@ -18,7 +18,7 @@ public class Feedback
     
     public String toString(){
         String s = "";
-        s = ("la matricola : " + matricola + " ha ricevuto un punteggio di : " + punteggio + " il : " + data);
+        s = ("la matricola : " + matricola + id + " ha ricevuto un punteggio di : " + punteggio + " il : " + data);
         return s;
     }
     

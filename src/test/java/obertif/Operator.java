@@ -1,7 +1,6 @@
 package obertif;
-import java.util.*;
 import java.time.LocalDate;
-import java.util.Date;
+
 
 public class Operator
 {
@@ -15,7 +14,7 @@ public class Operator
         name = n;
         surname = c;
         birthDate = nascita;
-        matricola = String.valueOf(codiceProgressivo);
+        matricola = n+c+nascita.toString(); //String.valueOf(codiceProgressivo);
         codiceProgressivo++;
     }
     
