@@ -1,3 +1,5 @@
+package zinif;
+
 import java.time.LocalDate;
 
 class Main {

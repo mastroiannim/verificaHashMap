@@ -1,6 +1,6 @@
 package gavocid;
 
-public class NotUniqueOperatorException extends Exception
+public class NotUniqueOperatorException extends RuntimeException
 {
     
 }

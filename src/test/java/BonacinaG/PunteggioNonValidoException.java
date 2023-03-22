@@ -1,6 +1,6 @@
 package BonacinaG;
 
-public class PunteggioNonValidoException extends Exception
+public class PunteggioNonValidoException extends RuntimeException
 {
     public PunteggioNonValidoException(){}
 }

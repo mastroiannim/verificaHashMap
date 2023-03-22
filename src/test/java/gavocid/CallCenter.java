@@ -62,13 +62,29 @@ public class CallCenter
         return s;
     }
     
-    public int valutazioniNegative(){
+    public Operator[] valutazioniNegative(){
         
         Iterator<Feedback> i = feedbacks.iterator();
         while(i.hasNext()){
             Feedback u = i.next();
         }
-        return -1;
+        return null;
+    }
+
+    public Feedback[] restituisciValutazioni() {
+        return null;
+    }
+
+    public int valutazioneComplessiva(String matricola) {
+        return 0;
+    }
+
+    public Operator[] best() {
+        return null;
+    }
+
+    public int valutazioneMese(String matricola, int mese, int anno) {
+        return 0;
     }
     
     

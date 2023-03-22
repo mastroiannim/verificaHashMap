@@ -1,4 +1,4 @@
-package mastroiannim;
+package arnoldiS;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -41,7 +41,7 @@ public class TestCallCenter {
         CallCenter c = new CallCenter();
         LocalDate bd = getRandomData();
         try {
-            c.registraOperatore("Michele", "Mastroianni", bd);
+            c.registraOperatore("M", "M", bd);
         } catch (NotUniqueOperatorException e) {
             fail("NotUniqueOperatorException");
         }
@@ -52,8 +52,8 @@ public class TestCallCenter {
         assertThrows(NotUniqueOperatorException.class, () -> {
             CallCenter c = new CallCenter();
             LocalDate bd = getRandomData();
-            c.registraOperatore("Michele", "Mastroianni", bd);
-            c.registraOperatore("Michele", "Mastroianni", bd);
+            c.registraOperatore("M", "M", bd);
+            c.registraOperatore("M", "M", bd);
         });  
     }
 
@@ -64,7 +64,7 @@ public class TestCallCenter {
         LocalDate dataValutazione = getRandomData();
         LocalDate bd = getRandomData();
         try {
-            String matricola =  c.registraOperatore("Michele", "Mastroianni", bd);
+            String matricola =  c.registraOperatore("M", "M", bd);
             c.registraValutazione(matricola, punteggio, dataValutazione);
         } catch (InvalidOperatorException e) {
             fail("InvalidOperatorException");

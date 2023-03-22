@@ -34,16 +34,16 @@ public class CallCenter
         throw new InvalidOperatorException();
     }
     
-    public void to_string(){
-        System.out.println("numero di operatori: " + classifica.size());
+    public String toString(){
+        String ret = "numero di operatori: " + classifica.size();
         for(Operator o : classifica.keySet()){
-            o.to_string();
+            ret += o.toString();
         }
         
         for(Feedback f : classifica.values()){
-            f.to_string();
+            ret += f.toString();
         }
-        
+        return ret;
     }
     
     public int valutazioneComplessiva(String matricola){
@@ -66,10 +66,21 @@ public class CallCenter
         return tot;
     }
     
-    public class NotUniqueOperatorException extends Exception{
+    public class NotUniqueOperatorException extends RuntimeException{
     
     }
-    public class InvalidOperatorException extends Exception{
+    public class InvalidOperatorException extends RuntimeException{
 
+    }
+    public Feedback[] restituisciValutazioni() {
+        return null;
+    }
+
+    public Operator[] valutazioniNegative() {
+        return null;
+    }
+
+    public Operator[] best() {
+        return null;
     }
 }

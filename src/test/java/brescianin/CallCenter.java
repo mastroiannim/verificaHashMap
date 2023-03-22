@@ -42,4 +42,20 @@ public class CallCenter
     public Feedback[] restituisciValutazioni(){
          return feedbacks.values().toArray(new Feedback[0]);
     }
+
+    public int valutazioneComplessiva(String matricola) {
+        return 0;
+    }
+
+    public int valutazioneMese(String matricola, int mese, int anno) {
+        return 0;
+    }
+
+    public Operator[] best() {
+        return null;
+    }
+
+    public Operator[] valutazioniNegative() {
+        return null;
+    }
 }

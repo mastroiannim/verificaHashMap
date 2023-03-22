@@ -23,7 +23,7 @@ public class CallCenter
     }
     
         
-    public int registraValtazione(String m, int s, LocalDate d) throws InvalidOperatorException{
+    public int registraValutazione(String m, int s, LocalDate d) throws InvalidOperatorException{
         int idValut=idValutProgressivo;
         Feedback f = new Feedback(m, s, d);
         feedbacks.put(idValut, f); 
@@ -39,6 +39,18 @@ public class CallCenter
     public int valutazioneComplessiva(String matricola) {
         int tot=0;
         return tot;
+    }
+
+    public Operator[] best() {
+        return null;
+    }
+
+    public int valutazioneMese(String matricola, int mese, int anno) {
+        return 0;
+    }
+
+    public Operator[] valutazioniNegative() {
+        return null;
     }
 
 }

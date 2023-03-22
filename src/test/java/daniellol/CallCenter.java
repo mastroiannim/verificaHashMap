@@ -113,6 +113,6 @@ public class CallCenter {
     }
 
     public Operator[] best() {
-        
+        return null;
     }
 }

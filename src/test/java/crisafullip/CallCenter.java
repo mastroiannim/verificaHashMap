@@ -64,6 +64,18 @@ public class CallCenter extends Exception
        int matricolaIntera =  n.hashCode() + c.hashCode();
        return matricolaIntera;
    }
+
+public Operator[] valutazioniNegative() {
+    return null;
+}
+
+public Operator[] best() {
+    return null;
+}
+
+public int valutazioneMese(String matricola, int mese, int anno) {
+    return 0;
+}
    
 
 }

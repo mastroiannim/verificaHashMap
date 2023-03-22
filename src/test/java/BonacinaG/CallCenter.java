@@ -98,5 +98,17 @@ public class CallCenter
         
         return totale;
     }
+
+    public Operator[] valutazioniNegative() {
+        return null;
+    }
+
+    public int valutazioneMese(String matricola, int mese, int anno) {
+        return 0;
+    }
+
+    public Operator[] best() {
+        return null;
+    }
     
 }

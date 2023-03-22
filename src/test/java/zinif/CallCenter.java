@@ -1,3 +1,5 @@
+package zinif;
+
 import java.time.LocalDate;
 import java.util.Hashtable;
 import java.util.Iterator;

@@ -22,7 +22,7 @@ public class CallCenter
         o.setMatricola(matricola);
         ops.put(matricola, o);
         feeds.put(matricola, new LinkedList<>());
-        return "";
+        return matricola;
     }
     
     public int registraValutazione(String m, int s, LocalDate d) throws InvalidOperatorException, InvalidScoreException {

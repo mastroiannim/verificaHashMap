@@ -23,8 +23,9 @@ public class Operator
         return matricola;
     }
     
-    public void to_string(){
-        System.out.println("matricola: " + matricola);
-        System.out.println("data di nascita " + dataNascita);
+    public String toString(){
+        String ret = "matricola: " + matricola;
+        ret += "data di nascita " + dataNascita;
+        return ret;
     }
 }

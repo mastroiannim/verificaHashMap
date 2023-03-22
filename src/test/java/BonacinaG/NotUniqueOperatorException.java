@@ -1,6 +1,6 @@
 package BonacinaG;
 
-public class NotUniqueOperatorException extends Exception
+public class NotUniqueOperatorException extends RuntimeException
 {
      public NotUniqueOperatorException(){}
 }

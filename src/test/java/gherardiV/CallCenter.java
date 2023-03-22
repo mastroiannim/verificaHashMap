@@ -168,13 +168,13 @@ public class CallCenter {
     }
 }
 
-class NotUniqueOperatorException extends Exception {
+class NotUniqueOperatorException extends RuntimeException {
     public NotUniqueOperatorException(String message) {
         super(message);
     }
 }
 
-class InvalidOperatorException extends Exception {
+class InvalidOperatorException extends RuntimeException {
     public InvalidOperatorException(String message) {
         super(message);
     }

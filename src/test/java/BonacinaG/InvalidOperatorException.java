@@ -1,6 +1,6 @@
 package BonacinaG;
 
-public class InvalidOperatorException extends Exception
+public class InvalidOperatorException extends RuntimeException
 {
     public InvalidOperatorException(){}
 }
