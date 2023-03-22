@@ -6,12 +6,13 @@ import java.time.LocalDate;
 
 public class CallCenter extends Exception
 {
-   HashMap<Integer, Operator> operatori;
+   HashMap<String, Operator> operatori; //correzzione: da Integer a string
    HashMap<Integer, Feedback> feedback;
+   
    int contaMatricola;
-   int idFeedBack = 0;
+   
    public CallCenter(){
-       operatori = new HashMap<Integer, Operator>();
+       operatori = new HashMap<String, Operator>(); //stessa cosa di riga 9
        feedback = new HashMap<Integer, Feedback>();
        contaMatricola = 1;
    }
@@ -20,19 +21,19 @@ public class CallCenter extends Exception
        int matricola = calcolaMatricola(n,s);
        String mat = Integer.toString(matricola);
        
-       if(operatori.containsKey(matricola)){
+       if(operatori.containsKey(mat)){
            throw new NotUniqueOperatorException(); 
        }
        Operator o = new Operator(n,s,b,mat);
-       operatori.put(matricola, o);
-       return "Operatore registrato";
+       operatori.put(mat, o);
+       return mat; //correzzione: "Operatore registrato" al posto di mat
    }
    
    public int registraValutazione(String m, int s, LocalDate b) throws crisafullip.InvalidOperatorException {
-       if(!operatori.containsKey(Integer.parseInt(m))){
+       if(!operatori.containsKey(m)){
            throw new InvalidOperatorException();   
        }
-       Feedback f = new Feedback(m,s,b, idFeedBack++);
+       Feedback f = new Feedback(m,s,b);
        feedback.put(f.getId(), f);
        return f.getId();
    }
@@ -69,12 +70,12 @@ public Operator[] valutazioniNegative() {
     return null;
 }
 
-public Operator[] best() {
-    return null;
-}
-
 public int valutazioneMese(String matricola, int mese, int anno) {
     return 0;
+}
+
+public Operator[] best() {
+    return null;
 }
    
 

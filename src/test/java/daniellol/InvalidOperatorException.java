@@ -1,5 +1,5 @@
 package daniellol;
 
-public class InvalidOperatorException extends RuntimeException {
+public class InvalidOperatorException extends Exception {
 
 }

@@ -18,7 +18,7 @@ public class CallCenter
         s += n.substring(0,2);
         s += c.substring(0,2);
         
-        if(!operatori.containsKey(s))
+        if(operatori.containsKey(s))   //<---- qua avevo messo un not 
             throw new NotUniqueOperatorException();
             
         Operator o = new Operator(n, c, b);
@@ -40,7 +40,7 @@ public class CallCenter
             }
         }
         
-        Feedback f = new Feedback(m, s, d);
+        new Feedback(m, s, d);    //----> avevo sbagliato a creare il nuovo feedback
         return -1;
     }
     
@@ -66,17 +66,14 @@ public class CallCenter
         
         Iterator<Feedback> i = feedbacks.iterator();
         while(i.hasNext()){
-            Feedback u = i.next();
+            i.next();    
+            //<--- qua avevo creato ua nuova valutazione che non usavo e quindi mi dava errore vscode
         }
-        return null;
+        return -1;
     }
 
     public Feedback[] restituisciValutazioni() {
         return null;
-    }
-
-    public int valutazioneComplessiva(String matricola) {
-        return 0;
     }
 
     public Operator[] best() {
@@ -84,6 +81,10 @@ public class CallCenter
     }
 
     public int valutazioneMese(String matricola, int mese, int anno) {
+        return 0;
+    }
+
+    public int valutazioneComplessiva(String matricola) {
         return 0;
     }
     

@@ -2,6 +2,8 @@ package daniellol;
 import java.time.LocalDate;
 import java.util.*;
 
+/* per quanto riguarda la correzione della verifica erano errori stupidi causati dalla mia mancanza di tempo per testare il codice */
+
 public class CallCenter {
     //HashMap<Operator, Feedback> feedbacks;
 
@@ -52,7 +54,12 @@ public class CallCenter {
             f.add(value);
         });
 
-        return (Feedback[]) f.toArray();
+        Feedback[] res = new Feedback[f.size()];
+        res = f.toArray(res);
+
+        return res;
+
+        //return feedback.values().toArray(new Feedback[0]);
     }
 
     public Operator[] restituisciOperatori() {
@@ -60,8 +67,12 @@ public class CallCenter {
         operators.forEach((key, value) -> {
             f.add(value);
         });
+        
+        Operator[] res = new Operator[f.size()];
+        res = f.toArray(res);
 
-        return (Operator[]) f.toArray();
+        return res;
+        //return operators.values().toArray(new Operator[0]);
     }
 
     public int valutazioneComplessiva(String matricola) throws InvalidOperatorException {
@@ -100,17 +111,21 @@ public class CallCenter {
 
     public Operator[] valutazioniNegative() throws InvalidOperatorException {
         Operator[] op = restituisciOperatori();
-        Feedback[] f = restituisciValutazioni();
+        //Feedback[] f = restituisciValutazioni();
         ArrayList<Operator> negativi = new ArrayList<Operator>();
 
         for (int i = 0; i < op.length; i++) {
-            if (valutazioneComplessiva(f[i].getMatricola()) < 0) {
+            if (valutazioneComplessiva(op[i].getMatricola()) < 0) {
                 negativi.add(op[i]);
             }
         }
 
-        return (Operator[]) negativi.toArray();
+        Operator[] res = new Operator[negativi.size()];
+        res = negativi.toArray(res);
+
+        return res;
     }
+
 
     public Operator[] best() {
         return null;

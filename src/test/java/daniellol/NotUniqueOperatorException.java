@@ -1,5 +1,5 @@
 package daniellol;
 
-public class NotUniqueOperatorException extends RuntimeException {
+public class NotUniqueOperatorException extends Exception {
     
 }

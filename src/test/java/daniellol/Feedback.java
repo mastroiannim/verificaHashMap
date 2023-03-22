@@ -5,6 +5,7 @@ public class Feedback {
     private String matricola;
     private int punteggio;
     private LocalDate date;
+    private int id_private = 0;
     static int id = 0;
 
     Feedback(String matricola, int punteggio, LocalDate data) {
@@ -12,11 +13,12 @@ public class Feedback {
         this.punteggio = punteggio;
         controllo();
         this.date = data;
+        id_private = Feedback.id;
         Feedback.id++;
     }
 
     public int getId() {
-        return id;
+        return id_private;
     }
 
     public String getMatricola() {
@@ -41,6 +43,6 @@ public class Feedback {
     }
 
     public String toString() {
-        return "Matricola: " + matricola + "Punteggio: " + punteggio + "Data valutazione: " + date.toString() + "Id: " + id;
+        return "Matricola: " + matricola + " Punteggio: " + punteggio + " Data valutazione: " + date.toString() + " Id: " + getId();
     }
 }

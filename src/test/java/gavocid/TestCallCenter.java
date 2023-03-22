@@ -41,7 +41,7 @@ public class TestCallCenter {
         CallCenter c = new CallCenter();
         LocalDate bd = getRandomData();
         try {
-            c.registraOperatore("M", "M", bd);
+            c.registraOperatore("Mastroianni", "Michele", bd);
         } catch (NotUniqueOperatorException e) {
             fail("NotUniqueOperatorException");
         }
@@ -52,8 +52,8 @@ public class TestCallCenter {
         assertThrows(NotUniqueOperatorException.class, () -> {
             CallCenter c = new CallCenter();
             LocalDate bd = getRandomData();
-            c.registraOperatore("M", "M", bd);
-            c.registraOperatore("M", "M", bd);
+            c.registraOperatore("Mastroianni", "Michele", bd);   //<----- non andavano perche la mia matricola prendeva le prime due lettere di nome e cognome (stessa cosa in tutti i test)
+            c.registraOperatore("Mastroianni", "Michele", bd);
         });  
     }
 
@@ -64,7 +64,7 @@ public class TestCallCenter {
         LocalDate dataValutazione = getRandomData();
         LocalDate bd = getRandomData();
         try {
-            String matricola =  c.registraOperatore("M", "M", bd);
+            String matricola =  c.registraOperatore("Mastroianni", "Michele", bd);
             c.registraValutazione(matricola, punteggio, dataValutazione);
         } catch (InvalidOperatorException e) {
             fail("InvalidOperatorException");
@@ -186,7 +186,7 @@ public class TestCallCenter {
 
         int tot = Integer.MIN_VALUE;
         try {
-            String michele = c.registraOperatore("michele", "m", getRandomData());
+            String michele = c.registraOperatore("michele", "mastroianni", getRandomData());
             matricola =  c.registraOperatore(getRandomString(), getRandomString(), getRandomData());
             c.registraValutazione(matricola, -3, data1);
             c.registraValutazione(matricola, -3, data2); 

@@ -10,8 +10,8 @@ public class Feedback
     LocalDate data;
     int id;
     
-    int conta = 0;
-    public Feedback(String m, int p, LocalDate d, int i){
+    static int conta = 0;
+    public Feedback(String m, int p, LocalDate d){
         this.matricola = m;
         this.punteggio = p;
         this.data = d;
