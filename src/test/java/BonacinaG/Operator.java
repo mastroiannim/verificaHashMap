@@ -16,9 +16,9 @@ public class Operator
         this.cognome = cognome;
         this.dataDiNascita = dataDiNascita;
         this.matricola = matricola;
-        this.feedback = new LinkedList();
+        this.feedback = new LinkedList<>();
     }
-    
+      
     /*public void aggiungiOperatore(Operator p)
     {
         operatori.add(p);

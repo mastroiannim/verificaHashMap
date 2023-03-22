@@ -10,8 +10,8 @@ public class CallCenter
     
     public CallCenter()
     {
-        feedbackOperatori = new LinkedList();
-        operatori = new HashMap();
+        feedbackOperatori = new LinkedList<>();
+        operatori = new HashMap<>();
     }
     
     public String registraOperatore(String n, String c, LocalDate b) throws NotUniqueOperatorException
@@ -22,7 +22,7 @@ public class CallCenter
         h = h % matricola.length();
         h = h < 0 ? -h : h;
         
-        if(operatori.containsKey(h)){
+        if(operatori.containsKey(String.valueOf(h))){ //prima era solo h
             throw new NotUniqueOperatorException();
         }
         
@@ -33,10 +33,10 @@ public class CallCenter
         return matricola;
     }
     
-    public int registraValutazione(String m, int s, LocalDate d) throws PunteggioNonValidoException, NotUniqueOperatorException
+    public int registraValutazione(String m, int s, LocalDate d) throws PunteggioNonValidoException, NotUniqueOperatorException, InvalidOperatorException
     {
         if(!operatori.containsKey(m)){
-            throw new NotUniqueOperatorException();
+            throw new /*NotUniqueOperatorException*/ InvalidOperatorException();
         }
         
         Feedback c = new Feedback(m, s, d, progressivo);
@@ -68,7 +68,7 @@ public class CallCenter
         Feedback[] x = new Feedback[feedbackOperatori.size()];
         Iterator<Feedback> i = feedbackOperatori.iterator();
         int conta = 0;
-        String stringa = "";
+        //String stringa = "";
         
         while(i.hasNext())
         {
@@ -99,9 +99,9 @@ public class CallCenter
         return totale;
     }
 
-    public Operator[] valutazioniNegative() {
+	public Operator[] valutazioniNegative() {
         return null;
-    }
+        }
 
     public int valutazioneMese(String matricola, int mese, int anno) {
         return 0;
