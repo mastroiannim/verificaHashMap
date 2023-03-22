@@ -25,8 +25,8 @@ public class CallCenter {
         String matricola = n+c+b;
         //controllo
         if(operators.get(matricola) == null){
-            //Operator op = new Operator(n, c, b, matricola);
-            //operators.put(matricola, op);
+            Operator op = new Operator(n, c, b, matricola);
+            operators.put(matricola, op);
             return matricola;
         }
         if(operators.get(matricola) != null ){
