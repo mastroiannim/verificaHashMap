@@ -3,7 +3,7 @@ import java.time.LocalDate;
 
 public class Feedback
 {
-    public class InvalidScoreException extends Exception{}
+    public class InvalidScoreException extends RuntimeException{}
     String matricola;
     int punteggio;
     LocalDate data;

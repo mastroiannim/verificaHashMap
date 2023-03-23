@@ -4,9 +4,9 @@ import java.time.LocalDate;
 
 public class CallCenter
 {
-    public class NotUniqueOperatorException extends Exception{}
-    public class InvalidOperatorException extends Exception{}
-    public class InvalidScoreException extends Exception{}
+    public class NotUniqueOperatorException extends RuntimeException{}
+    public class InvalidOperatorException extends RuntimeException{}
+    public class InvalidScoreException extends RuntimeException{}
     HashMap<String, Operator> operatori;
     HashMap<String, LinkedList> feedbacks;
     
