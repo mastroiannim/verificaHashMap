@@ -24,7 +24,7 @@ public class CallCenter
         return o.getMatricola();
     }
     
-    public int registraValutazione(String m, int s, LocalDate d) throws InvalidOperatorException, sonzognig.Feedback.InvalidScoreException{
+    public int registraValutazione(String m, int s, LocalDate d) throws InvalidOperatorException, Feedback.InvalidScoreException{
         if(!operatori.containsKey(m)){
             throw new InvalidOperatorException();
         }
@@ -82,59 +82,36 @@ public class CallCenter
     }
     
     public Operator[] valutazioniNegative() throws InvalidOperatorException {
-        int index = 0;
         List<String> l = new ArrayList<String>(operatori.keySet());
-        Operator[] o = new Operator[l.size()];
+        LinkedList<Operator> o = new LinkedList<Operator>();
         Iterator<String> i = l.iterator();
         while(i.hasNext()){
             String u = i.next();
             int v = valutazioneComplessiva(u);
             if(v < 0){
-                o[index] = operatori.get(u);
-                index++;
+                o.add(operatori.get(u));
             }
         }
-        /* per testare
-
-        String s = "";
-        for(int f=0; f < index; f++){
-            s += o[f] + " , "; 
-        }
-        System.out.println(s);
-            
-         */
-        return o;
+        return o.toArray(new Operator[o.size()]);
     }
     
     public Operator[] best() throws InvalidOperatorException {
         Double max = Double.NEGATIVE_INFINITY;
-        int index = 0;
         List<String> l = new ArrayList<String>(operatori.keySet());
-        Operator[] o = new Operator[l.size()];
+        LinkedList<Operator> o = new LinkedList<Operator>();
         Iterator<String> i = l.iterator();
         while(i.hasNext()){
             String u = i.next();
             double v = valutazioneComplessiva(u);
             if(v > max){
-                o = new Operator[l.size()];
-                o[index] = operatori.get(u);
-                index++;
+                o = new LinkedList<Operator>();
+                o.add(operatori.get(u));
                 max = v;
             }
             else if(v == max){
-                o[index] = operatori.get(u);
-                index++;
+                o.add(operatori.get(u));
             }
         }
-        /* per testare
-
-        String s = "";
-        for(int f=0; f < index; f++){
-            s += o[f] + " , "; 
-        }
-        System.out.println(s);
-        
-        */
-       return o;
+        return o.toArray(new Operator[o.size()]);
     }
 }
