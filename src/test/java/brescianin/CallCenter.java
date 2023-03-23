@@ -1,7 +1,9 @@
 package brescianin;
 
+
 import java.util.*;
 import java.time.*;
+
 
 public class CallCenter
 {
@@ -11,7 +13,7 @@ public class CallCenter
         operators = new HashMap<String, Operator>();
         feedbacks = new HashMap<Integer, Feedback>();
     }
-    
+   
     public String registraOperatore(String n, String c, LocalDate b) throws NotUniqueOperatorException {
         String matricola = calcolaMatricola(n, c, b);
         if (operators.containsKey(matricola)) {
@@ -22,14 +24,15 @@ public class CallCenter
         return matricola;
     }
 
+
     public String calcolaMatricola(String nome, String cognome, LocalDate dataNascita) {
         int hash = nome.hashCode() + cognome.hashCode() + dataNascita.hashCode();
         return  " " + Math.abs(hash);//Math.abs(hash) mi restituisce un valoe positivo
     }
-    
+   
     public int registraValutazione(String m, int s, LocalDate d) throws InvalidOperatorException {
         Operator operatore = operators.get(m);
-        if (operators.containsKey(operatore)) {
+        if (operatore == null) {
             throw new InvalidOperatorException();
         }
         Feedback feed = new Feedback(m, s, d);
@@ -45,7 +48,7 @@ public class CallCenter
 
     public int valutazioneComplessiva(String matricola) {
         return 0;
-    }
+}
 
     public int valutazioneMese(String matricola, int mese, int anno) {
         return 0;
